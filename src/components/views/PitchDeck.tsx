@@ -1,276 +1,750 @@
 import React, { useState } from 'react';
-import { ChevronRight, ChevronLeft } from 'lucide-react';
+import {
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  CircleDollarSign,
+  FileStack,
+  Globe,
+  Landmark,
+  Radar,
+  ShieldCheck,
+  Sparkles,
+  Waypoints,
+} from 'lucide-react';
 
-const slides = [
+type Slide = {
+  id: number;
+  title: string;
+  subtitle: string;
+  content: React.ReactNode;
+};
+
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex items-center rounded-full border border-[#1f9d94]/35 bg-[#0c1f2c]/80 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.28em] text-[#7be0d6]">
+      {children}
+    </span>
+  );
+}
+
+function MetricCard({
+  value,
+  label,
+  source,
+}: {
+  value: string;
+  label: string;
+  source: string;
+}) {
+  return (
+    <div className="rounded-3xl border border-white/10 bg-[#0b1724]/85 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
+      <div className="text-3xl font-semibold text-white">{value}</div>
+      <div className="mt-2 text-sm leading-relaxed text-[#b4c3d3]">{label}</div>
+      <div className="mt-4 text-[10px] uppercase tracking-[0.22em] text-[#7be0d6]/80">{source}</div>
+    </div>
+  );
+}
+
+function BulletList({ items }: { items: string[] }) {
+  return (
+    <ul className="space-y-4">
+      {items.map((item) => (
+        <li key={item} className="flex items-start gap-3 text-[15px] leading-7 text-[#d9e6f2]">
+          <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#23c6b7]" />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function TierCard({
+  code,
+  title,
+  detail,
+  accent,
+}: {
+  code: string;
+  title: string;
+  detail: string;
+  accent: string;
+}) {
+  return (
+    <div className="rounded-[28px] border border-white/10 bg-[#0d1b29]/85 p-6">
+      <div
+        className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border text-sm font-semibold tracking-[0.2em]"
+        style={{ borderColor: accent, color: accent }}
+      >
+        {code}
+      </div>
+      <h4 className="mt-5 text-lg font-semibold text-white">{title}</h4>
+      <p className="mt-3 text-sm leading-6 text-[#aebfd0]">{detail}</p>
+    </div>
+  );
+}
+
+function PolicyPack({
+  name,
+  note,
+  featured = false,
+}: {
+  name: string;
+  note: string;
+  featured?: boolean;
+}) {
+  return (
+    <div
+      className={`rounded-[26px] border p-5 ${
+        featured
+          ? 'border-[#23c6b7]/60 bg-[linear-gradient(180deg,rgba(35,198,183,0.16),rgba(11,23,36,0.95))]'
+          : 'border-white/10 bg-[#0b1724]/88'
+      }`}
+    >
+      <div className="flex items-center justify-between">
+        <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-white">{name}</h4>
+        <span className="rounded-full border border-white/10 px-2 py-1 text-[9px] uppercase tracking-[0.18em] text-[#7be0d6]">
+          Pack
+        </span>
+      </div>
+      <p className="mt-4 text-sm leading-6 text-[#b5c6d8]">{note}</p>
+    </div>
+  );
+}
+
+const slides: Slide[] = [
   {
     id: 1,
-    title: "Sovereign-AI",
-    subtitle: "The runtime governance layer for safe, auditable enterprise GenAI.",
+    title: 'Title / Hook',
+    subtitle: 'Configurable AI Runtime Governance Platform',
     content: (
-      <div className="flex flex-col items-center justify-center h-full text-center space-y-8">
-        <p className="text-[11px] uppercase tracking-[0.3em] text-[#D4AF37] mb-2">Vantage Pitch Series</p>
-        <h1 className="text-6xl font-serif text-white">Sovereign-AI</h1>
-        <p className="text-xl font-light text-white/60 max-w-2xl">Configurable AI Runtime Governance for LLMs, RAG Systems, Copilots, and AI Agents</p>
+      <div className="grid h-full gap-8 lg:grid-cols-[1.25fr_0.75fr]">
+        <div className="flex flex-col justify-between rounded-[34px] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(35,198,183,0.20),rgba(9,18,30,0.92)_52%),linear-gradient(180deg,rgba(10,18,30,0.96),rgba(7,13,23,0.98))] p-10">
+          <div>
+            <Eyebrow>India-first wedge. Global category.</Eyebrow>
+            <h1 className="mt-8 max-w-4xl text-5xl font-semibold leading-[1.06] text-white xl:text-6xl">
+              Sovereign-AI is the configurable runtime governance layer for safe, auditable enterprise GenAI.
+            </h1>
+            <p className="mt-6 max-w-3xl text-lg leading-8 text-[#b9cad9]">
+              The control plane between enterprise AI applications and model outputs: enforce policy YAML, redact
+              sensitive data, detect prompt injection, route risk through a three-tier engine, and generate audit-ready evidence.
+            </p>
+          </div>
+          <div className="grid gap-4 pt-8 sm:grid-cols-3">
+            <MetricCard value="India BFSI + Healthtech" label="Perfect first wedge: acute compliance pain and local data sensitivity." source="Commercial beachhead" />
+            <MetricCard value="3-Tier Runtime Engine" label="Regex, semantic/vector, and LangGraph review in one enforcement path." source="Product architecture" />
+            <MetricCard value="Policy Packs" label="Reusable jurisdiction and domain packs create expansion without rewriting the core." source="Moat" />
+          </div>
+        </div>
+
+        <div className="grid gap-4">
+          <div className="rounded-[32px] border border-[#23c6b7]/20 bg-[#0b1724]/92 p-8">
+            <div className="flex items-center gap-3 text-[#7be0d6]">
+              <ShieldCheck className="h-5 w-5" />
+              <span className="text-[11px] uppercase tracking-[0.28em]">What buyers feel</span>
+            </div>
+            <div className="mt-6 space-y-4">
+              {[
+                'We can ship GenAI faster without losing control.',
+                'We can prove why a prompt or output was allowed, blocked, or redacted.',
+                'We can start in India and scale policy enforcement globally.',
+              ].map((line) => (
+                <div key={line} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-sm leading-6 text-[#d9e6f2]">
+                  {line}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="rounded-[32px] border border-white/10 bg-[#0a1421]/92 p-8">
+            <div className="text-[11px] uppercase tracking-[0.28em] text-[#7be0d6]">Visual on slide</div>
+            <div className="mt-5 space-y-4">
+              <div className="rounded-2xl border border-white/10 bg-[#102235] p-4">
+                <div className="text-xs uppercase tracking-[0.22em] text-white/70">App Layer</div>
+                <div className="mt-2 text-lg text-white">Copilot, Agent, Chatbot, Workflow</div>
+              </div>
+              <div className="flex justify-center text-[#23c6b7]">
+                <ArrowRight className="h-5 w-5 rotate-90" />
+              </div>
+              <div className="rounded-2xl border border-[#23c6b7]/30 bg-[linear-gradient(180deg,rgba(35,198,183,0.18),rgba(11,23,36,0.95))] p-4">
+                <div className="text-xs uppercase tracking-[0.22em] text-[#8ef3ea]">Sovereign-AI Runtime Layer</div>
+                <div className="mt-2 text-lg text-white">Policy enforcement, redaction, routing, audit trail</div>
+              </div>
+              <div className="flex justify-center text-[#23c6b7]">
+                <ArrowRight className="h-5 w-5 rotate-90" />
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-[#102235] p-4">
+                <div className="text-xs uppercase tracking-[0.22em] text-white/70">Model Layer</div>
+                <div className="mt-2 text-lg text-white">OpenAI, Azure, Bedrock, Vertex, Ollama</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    )
+    ),
   },
   {
     id: 2,
-    title: "The Problem",
-    subtitle: "GenAI adoption heavily outpaces governance controls.",
+    title: 'The Problem',
+    subtitle: 'Policy documents do not stop runtime failures',
     content: (
-      <div className="grid grid-cols-2 gap-10 h-full items-center">
-        <div className="space-y-6">
-          <h2 className="text-4xl font-serif text-white leading-tight">Traditional security tools fail at the LLM runtime layer.</h2>
-          <p className="text-sm text-white/60 leading-relaxed font-light">Enterprises cannot prove what their AI did. Sensitive data enters prompts, agents call unintended tools, and compliance teams rely on static policy documents, not runtime enforcement.</p>
+      <div className="grid h-full gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="rounded-[32px] border border-white/10 bg-[#091321]/92 p-10">
+          <Eyebrow>Runtime blind spot</Eyebrow>
+          <h3 className="mt-7 max-w-3xl text-4xl font-semibold leading-tight text-white">
+            Enterprise GenAI is entering production faster than governance can enforce it.
+          </h3>
+          <div className="mt-8">
+            <BulletList
+              items={[
+                'Prompt injection and insecure outputs bypass traditional app security controls.',
+                'Sensitive data moves through prompts, retrieval context, and model responses in milliseconds.',
+                'Compliance teams own static policies; engineering teams still lack runtime enforcement.',
+                'CISOs need evidence, not post-incident explanations.',
+                'Agentic workflows multiply risk because tools, memory, and downstream systems extend the attack surface.',
+              ]}
+            />
+          </div>
         </div>
-        <div className="bg-white/[0.02] border border-white/10 p-8 space-y-8">
-          <div className="border-l-2 border-[#D4AF37] pl-5 py-1">
-            <strong className="text-white text-xs uppercase tracking-widest block mb-2">Prompt Injection</strong>
-            <span className="text-white/50 text-sm font-light">Indirect prompts overriding system safety.</span>
+
+        <div className="grid gap-4">
+          <div className="rounded-[32px] border border-[#ff8b8b]/20 bg-[linear-gradient(180deg,rgba(83,19,24,0.55),rgba(17,12,18,0.95))] p-8">
+            <div className="text-[11px] uppercase tracking-[0.28em] text-[#ffb0b0]">Failure chain visual</div>
+            <div className="mt-5 grid gap-3">
+              {[
+                'User prompt includes hidden override',
+                'Model accesses sensitive context',
+                'Output returns PII or unsafe recommendation',
+                'No explainable log of why it happened',
+              ].map((step, index) => (
+                <div key={step} className="flex items-center gap-4 rounded-2xl border border-white/10 bg-black/20 p-4">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[#ff8b8b]/40 text-sm font-semibold text-[#ffd0d0]">
+                    {index + 1}
+                  </div>
+                  <div className="text-sm leading-6 text-white/90">{step}</div>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="border-l-2 border-[#D4AF37] pl-5 py-1">
-            <strong className="text-white text-xs uppercase tracking-widest block mb-2">Sensitive Disclosure</strong>
-            <span className="text-white/50 text-sm font-light">LLMs leaking customer or patient PII.</span>
-          </div>
-          <div className="border-l-2 border-[#D4AF37] pl-5 py-1">
-            <strong className="text-white text-xs uppercase tracking-widest block mb-2">Audit Failure</strong>
-            <span className="text-white/50 text-sm font-light">Inability to prove why a decision was allowed.</span>
+          <div className="rounded-[32px] border border-white/10 bg-[#0d1b29]/92 p-8">
+            <div className="text-[11px] uppercase tracking-[0.28em] text-[#7be0d6]">OWASP-aligned risk clusters</div>
+            <div className="mt-5 grid grid-cols-2 gap-3 text-sm text-[#d7e5f2]">
+              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">Prompt injection</div>
+              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">Insecure output handling</div>
+              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">Sensitive information disclosure</div>
+              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">Tool misuse in agentic flows</div>
+            </div>
           </div>
         </div>
       </div>
-    )
+    ),
   },
   {
     id: 3,
-    title: "The Solution",
-    subtitle: "Configurable Runtime Enforcement.",
+    title: 'The Solution',
+    subtitle: 'Architecture + three-tier model',
     content: (
-      <div className="h-full flex flex-col justify-center space-y-12">
-        <p className="text-2xl font-serif italic text-white/80 leading-relaxed pb-12 border-b border-white/10">
-          Sovereign-AI sits in the runtime path of enterprise GenAI. It checks inputs and outputs, applies configurable policies, redacts sensitive data, detects prompt-injection attempts, and records audit evidence.
-        </p>
-        <div className="grid grid-cols-4 gap-6">
-          {['Input Validation', 'PII Redaction', 'Output Control', 'Consent Checks'].map(feature => (
-            <div key={feature} className="p-8 bg-white/[0.02] border border-white/10 flex items-center justify-center text-center hover:border-[#D4AF37]/50 transition-colors">
-              <h3 className="text-[#D4AF37] text-[10px] font-bold uppercase tracking-widest">{feature}</h3>
+      <div className="space-y-8">
+        <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="rounded-[32px] border border-white/10 bg-[#091321]/92 p-8">
+            <Eyebrow>Control plane architecture</Eyebrow>
+            <div className="mt-6 flex flex-col gap-4">
+              {[
+                'Enterprise AI App',
+                'Sovereign-AI Gateway',
+                'Policy YAML + Tier Router + Enforcement Logic',
+                'Model Provider + Tooling Layer',
+                'Control Tower UI + Audit Evidence',
+              ].map((item, index) => (
+                <div key={item} className="relative rounded-2xl border border-white/10 bg-white/[0.03] p-4 pl-16 text-sm text-white">
+                  <span className="absolute left-4 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-xl border border-[#23c6b7]/40 text-[#7be0d6]">
+                    {index + 1}
+                  </span>
+                  {item}
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          <div className="rounded-[32px] border border-[#23c6b7]/20 bg-[#0b1724]/92 p-8">
+            <Eyebrow>Why this works</Eyebrow>
+            <div className="mt-6 space-y-5 text-[15px] leading-7 text-[#d7e5f2]">
+              <p>
+                Sovereign-AI sits in front of or after any LLM stack and enforces safety, compliance, and quality contracts in real time.
+              </p>
+              <p>
+                The product separates policy from enforcement: update YAML packs, thresholds, or jurisdiction logic without rewriting the runtime.
+              </p>
+              <p>
+                Control Tower UI gives operators a single surface for decisions, logs, escalation patterns, and benchmark evidence.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid gap-4 lg:grid-cols-3">
+          <TierCard code="T1" title="Tier 1: Regex + heuristics" detail="Fast deterministic screening for obvious PII, unsafe strings, formatting anomalies, and known attack patterns. Handles the majority of traffic at the lowest cost." accent="#4fe3d7" />
+          <TierCard code="T2" title="Tier 2: Semantic + vector checks" detail="Embeddings-backed intent, similarity, and domain-risk detection for gray-zone prompts, context, and outputs that evade keyword filters." accent="#36b4d5" />
+          <TierCard code="T3" title="Tier 3: LangGraph review" detail="Escalation layer for ambiguous, high-impact, or agentic cases where deeper reasoning, tool constraints, and policy interpretation matter." accent="#6ea8ff" />
         </div>
       </div>
-    )
+    ),
   },
   {
     id: 4,
-    title: "Global Market Demand",
-    subtitle: "Regulatory frameworks demanding runtime governance.",
+    title: 'Why Now',
+    subtitle: 'Market timing + regulations',
     content: (
-      <div className="grid grid-cols-2 gap-6 h-full content-center">
-        <div className="p-8 border border-white/10 bg-white/[0.02] hover:border-[#D4AF37]/30 transition-colors">
-          <h3 className="text-[11px] font-bold uppercase tracking-widest text-[#D4AF37] mb-3">EU AI Act & GDPR</h3>
-          <p className="text-white/60 text-sm font-light leading-relaxed">High-risk system obligations, logging, human oversight, transparency.</p>
+      <div className="space-y-8">
+        <div className="grid gap-4 lg:grid-cols-3">
+          <MetricCard value="1 Aug 2024" label="EU AI Act entered into force; obligations are phasing in now across prohibited use, GPAI, and high-risk systems." source="European Commission" />
+          <MetricCard value="26 Jul 2024" label="NIST released its Generative AI Profile under the AI RMF, turning governance into an operating requirement." source="NIST" />
+          <MetricCard value="5 Jan 2025" label="India published Draft DPDP Rules 2025, pushing data fiduciaries toward operational compliance and audits." source="MeitY / PIB" />
         </div>
-        <div className="p-8 border border-white/10 bg-white/[0.02] hover:border-[#D4AF37]/30 transition-colors">
-          <h3 className="text-[11px] font-bold uppercase tracking-widest text-[#D4AF37] mb-3">US NIST RMF & HIPAA</h3>
-          <p className="text-white/60 text-sm font-light leading-relaxed">Voluntary AI risk profiles, PHI detection workflows, minimum necessary rules.</p>
-        </div>
-        <div className="p-8 border border-white/10 bg-white/[0.02] hover:border-[#D4AF37]/30 transition-colors">
-          <h3 className="text-[11px] font-bold uppercase tracking-widest text-[#D4AF37] mb-3">India DPDP & RBI/BFSI</h3>
-          <p className="text-white/60 text-sm font-light leading-relaxed">Sovereign data protection, BFSI specific AI directives.</p>
-        </div>
-        <div className="p-8 border border-white/10 bg-white/[0.02] hover:border-[#D4AF37]/30 transition-colors">
-          <h3 className="text-[11px] font-bold uppercase tracking-widest text-[#D4AF37] mb-3">APAC / Singapore PDPA</h3>
-          <p className="text-white/60 text-sm font-light leading-relaxed">Consent signaling, cross-border evidence.</p>
+
+        <div className="grid gap-8 lg:grid-cols-[1fr_1fr]">
+          <div className="rounded-[32px] border border-white/10 bg-[#0a1523]/92 p-8">
+            <Eyebrow>Why buyers move now</Eyebrow>
+            <BulletList
+              items={[
+                'EU AI Act obligations are no longer abstract; organizations need operational controls and evidence trails.',
+                'NIST AI RMF plus the GenAI Profile gives U.S. enterprises a governance reference that procurement teams now recognize.',
+                'OWASP LLM Top 10 made runtime threats like prompt injection and insecure output handling board-visible.',
+                'India now combines DPDP momentum with RBI IT governance and data-handling pressure in regulated sectors.',
+                'Gartner projects AI governance spend at $492M in 2026 and above $1B by 2030.',
+              ]}
+            />
+          </div>
+
+          <div className="rounded-[32px] border border-white/10 bg-[#0b1724]/92 p-8">
+            <Eyebrow>Timing chart visual</Eyebrow>
+            <div className="mt-6 space-y-4">
+              {[
+                ['2024', 'EU AI Act enters into force', 'left-[8%]'],
+                ['2024', 'NIST GenAI Profile released', 'left-[28%]'],
+                ['2025', 'Draft DPDP Rules published', 'left-[50%]'],
+                ['2025', 'OWASP GenAI security becomes standard buying language', 'left-[68%]'],
+                ['2026', 'AI governance budget line item hardens', 'left-[86%]'],
+              ].map(([year, note, position]) => (
+                <div key={note} className="relative rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                  <div className="text-[10px] uppercase tracking-[0.22em] text-[#7be0d6]">{year}</div>
+                  <div className="mt-1 text-sm leading-6 text-white">{note}</div>
+                  <span className={`absolute bottom-0 ${position} h-2 w-2 translate-y-1/2 rounded-full bg-[#23c6b7]`} />
+                </div>
+              ))}
+            </div>
+            <div className="mt-6 h-px w-full bg-gradient-to-r from-[#23c6b7]/30 via-[#23c6b7] to-[#23c6b7]/30" />
+          </div>
         </div>
       </div>
-    )
+    ),
   },
   {
     id: 5,
-    title: "The Product",
-    subtitle: "A Three-Tier Policy Engine.",
+    title: 'Product Differentiation & Moat',
+    subtitle: 'Policy packs beat one-off guardrails',
     content: (
-      <div className="flex flex-col h-full justify-center space-y-8">
-        <div className="flex gap-8 items-center border-b border-white/10 pb-8">
-          <div className="w-16 h-16 shrink-0 border border-[#D4AF37]/50 text-[#D4AF37] flex items-center justify-center text-lg font-mono tracking-widest">T1</div>
-          <div className="flex-1">
-            <h3 className="text-[11px] font-bold uppercase tracking-widest text-white mb-2">Regex & Heuristics</h3>
-            <p className="text-sm text-white/50 font-light leading-relaxed">Fast deterministic checks for obvious patterns and lengths. Low cost, high throughput.</p>
+      <div className="grid h-full gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="rounded-[32px] border border-white/10 bg-[#08131f]/92 p-8">
+          <Eyebrow>Core moat</Eyebrow>
+          <h3 className="mt-6 text-4xl font-semibold leading-tight text-white">
+            The moat is not a single classifier. It is policy-vs-enforcement separation.
+          </h3>
+          <div className="mt-8">
+            <BulletList
+              items={[
+                'Policy YAML externalizes thresholds, actions, severity, escalation, and jurisdiction logic.',
+                'One runtime engine can sell multiple sector and geography-specific packs without replatforming.',
+                'Control Tower UI turns every runtime decision into reviewable evidence for security and compliance teams.',
+                'Model-agnostic deployment supports cloud, VPC, and air-gapped environments.',
+                'India-native packs expand into GDPR, HIPAA, and other global compliance SKUs.',
+              ]}
+            />
           </div>
         </div>
-        <div className="flex gap-8 items-center border-b border-white/10 pb-8">
-          <div className="w-16 h-16 shrink-0 border border-[#D4AF37]/50 text-[#D4AF37] flex items-center justify-center text-lg font-mono tracking-widest">T2</div>
-          <div className="flex-1">
-            <h3 className="text-[11px] font-bold uppercase tracking-widest text-white mb-2">Semantic & Vector Checks</h3>
-            <p className="text-sm text-white/50 font-light leading-relaxed">Embeddings-backed intention, similarity, and domain-risk detection.</p>
-          </div>
-        </div>
-        <div className="flex gap-8 items-center">
-          <div className="w-16 h-16 shrink-0 border border-[#D4AF37]/50 text-[#D4AF37] flex items-center justify-center text-lg font-mono tracking-widest">T3</div>
-          <div className="flex-1">
-            <h3 className="text-[11px] font-bold uppercase tracking-widest text-white mb-2">LangGraph Agent Review</h3>
-            <p className="text-sm text-white/50 font-light leading-relaxed">Deeper reasoning for ambiguous edge cases, tools, and fallback mapping.</p>
-          </div>
+
+        <div className="grid gap-4 md:grid-cols-2">
+          <PolicyPack name="India BFSI Pack" note="DPDP-aware controls, RBI-aligned operating posture, financial PII handling, audit exports." featured />
+          <PolicyPack name="India Healthtech Pack" note="Healthcare privacy controls, consent-sensitive workflows, redaction and response boundaries." featured />
+          <PolicyPack name="GDPR Pack" note="Cross-border data handling, minimization logic, explanation artifacts, region-aware controls." />
+          <PolicyPack name="HIPAA / PHI Pack" note="Clinical and patient-data redaction paths with stronger evidence retention." />
+          <PolicyPack name="Agentic AI Pack" note="Tool-call boundaries, escalation triggers, memory safety, and workflow-specific approval logic." />
+          <PolicyPack name="Custom Enterprise Pack" note="Customer-specific policy logic encoded once, enforced everywhere across AI apps." />
         </div>
       </div>
-    )
+    ),
   },
   {
     id: 6,
-    title: "The Moat: Policy Packs",
-    subtitle: "Turning custom platform deployments into repeatable SaaS SKUs.",
+    title: 'Target Markets & Prioritization',
+    subtitle: 'India BFSI / healthtech first. Global policy packs next.',
     content: (
-      <div className="grid grid-cols-3 gap-6 h-full content-center">
-        {['BFSI Pack', 'DPDP Pack', 'HIPAA/PHI Pack', 'UK GDPR Pack', 'Legal Pack', 'Agentic AI Pack'].map(pack => (
-          <div key={pack} className="bg-white/[0.02] border border-white/10 p-10 flex flex-col items-center text-center justify-center group hover:bg-[#D4AF37]/5 transition-colors">
-            <div className="w-10 h-[1px] bg-[#D4AF37] mb-6 group-hover:w-16 transition-all duration-300"></div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-white">{pack}</h4>
-            <span className="text-[9px] text-white/40 mt-4 font-mono uppercase tracking-[0.2em]">Configured Rules & Evidence</span>
+      <div className="space-y-8">
+        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="rounded-[32px] border border-white/10 bg-[#091321]/92 p-8">
+            <Eyebrow>Beachhead logic</Eyebrow>
+            <div className="mt-6 space-y-4">
+              {[
+                '1. India BFSI: strongest urgency because customer data sensitivity, RBI pressure, and fast GenAI experimentation collide.',
+                '2. India healthtech: regulated data, patient trust, and AI copilots create immediate runtime governance demand.',
+                '3. Expand to India insurance, legal, and enterprise shared services via adjacent packs.',
+                '4. Replicate globally with GDPR, HIPAA, and sector-specific packs for multinational buyers.',
+              ].map((item) => (
+                <div key={item} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-[15px] leading-7 text-[#dbe8f2]">
+                  {item}
+                </div>
+              ))}
+            </div>
           </div>
-        ))}
+
+          <div className="rounded-[32px] border border-white/10 bg-[#0b1724]/92 p-8">
+            <Eyebrow>Priority heatmap visual</Eyebrow>
+            <div className="mt-6 grid grid-cols-2 gap-3 text-sm">
+              {[
+                ['India BFSI', 'High urgency / High ACV', true],
+                ['India Healthtech', 'High urgency / Strong proof value', true],
+                ['India Insurance', 'Adjacent expansion', false],
+                ['Global BFSI', 'Post-proof scale motion', false],
+                ['Global Healthcare', 'Policy-pack replication', false],
+                ['Enterprise Agent Platforms', 'Horizontal expansion', false],
+              ].map(([name, note, active]) => (
+                <div
+                  key={name}
+                  className={`rounded-2xl border p-4 ${
+                    active ? 'border-[#23c6b7]/45 bg-[#123140]' : 'border-white/10 bg-white/[0.03]'
+                  }`}
+                >
+                  <div className="text-white">{name}</div>
+                  <div className="mt-2 text-xs uppercase tracking-[0.18em] text-[#9fc3d9]">{note}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="grid gap-4 md:grid-cols-3">
+          <MetricCard value="India-native PII helpers" label="Immediate localization advantage in early regulated deployments." source="Product fit" />
+          <MetricCard value="BFSI + Healthtech" label="Two categories where runtime proof matters before broad horizontal rollout." source="Wedge priority" />
+          <MetricCard value="Global policy-pack expansion" label="Same platform, new compliance packs, higher ACV motion." source="Scale logic" />
+        </div>
       </div>
-    )
+    ),
   },
   {
     id: 7,
-    title: "Buyer Personas & ICP",
-    subtitle: "Selling to the Global Enterprise C-Suite.",
+    title: 'Go-to-Market & Traction Path',
+    subtitle: 'Land with a pilot. Expand through policy packs and governance ownership.',
     content: (
-      <div className="flex flex-col justify-center h-full">
-        <table className="w-full text-left border-collapse">
-          <thead>
-            <tr className="border-b border-white/10">
-              <th className="py-4 text-[10px] uppercase tracking-[0.2em] text-[#D4AF37] font-normal">Buyer</th>
-              <th className="py-4 text-[10px] uppercase tracking-[0.2em] text-[#D4AF37] font-normal">Core Pain</th>
-              <th className="py-4 text-[10px] uppercase tracking-[0.2em] text-[#D4AF37] font-normal">Messaging Narrative</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-white/5">
-            <tr className="hover:bg-white/[0.02] transition-colors">
-              <td className="py-8 text-white uppercase tracking-wider text-xs font-bold">CISO / Security Head</td>
-              <td className="py-8 text-white/60 font-light text-sm">Prompt injection, data leakage</td>
-              <td className="py-8 font-serif italic text-white/80 text-lg">Control AI inputs and outputs at the boundary.</td>
-            </tr>
-            <tr className="hover:bg-white/[0.02] transition-colors">
-              <td className="py-8 text-white uppercase tracking-wider text-xs font-bold">DPO / Chief Compliance</td>
-              <td className="py-8 text-white/60 font-light text-sm">Regulatory defensibility, missing evidence</td>
-              <td className="py-8 font-serif italic text-white/80 text-lg">Turn governance policies into undeniable runtime logs.</td>
-            </tr>
-            <tr className="hover:bg-white/[0.02] transition-colors">
-              <td className="py-8 text-white uppercase tracking-wider text-xs font-bold">Head of Engineering</td>
-              <td className="py-8 text-white/60 font-light text-sm">Latency overhead, scalability</td>
-              <td className="py-8 font-serif italic text-white/80 text-lg">A centralized high-performance gateway, not developer fragmented.</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="grid h-full gap-8 lg:grid-cols-[1fr_1fr]">
+        <div className="rounded-[32px] border border-white/10 bg-[#0a1523]/92 p-8">
+          <Eyebrow>Land and expand</Eyebrow>
+          <div className="mt-6 space-y-4">
+            {[
+              'Pilot: secure one high-impact AI workflow in 4-6 weeks.',
+              'Prove: run redaction demos, runtime logs, and benchmark evidence.',
+              'Expand: add more workflows, more policy packs, and broader business units.',
+              'Standardize: become the shared runtime governance layer across enterprise GenAI.',
+            ].map((step, index) => (
+              <div key={step} className="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#23c6b7]/40 text-[#7be0d6]">
+                  {index + 1}
+                </div>
+                <div className="text-[15px] leading-7 text-[#d7e5f2]">{step}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="rounded-[32px] border border-white/10 bg-[#0b1724]/92 p-8">
+          <Eyebrow>Early traction assets to show</Eyebrow>
+          <div className="mt-6 grid gap-3 md:grid-cols-2">
+            {[
+              'Latency benchmark chart by tier',
+              'Before / after redaction demo',
+              'Prompt-injection detection trace',
+              'Control Tower audit screenshot',
+              'Policy YAML pack example',
+              'Deployment architecture diagram',
+            ].map((asset) => (
+              <div key={asset} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-sm leading-6 text-white/90">
+                {asset}
+              </div>
+            ))}
+          </div>
+          <div className="mt-6 rounded-2xl border border-[#23c6b7]/25 bg-[#0f2331] p-5 text-[15px] leading-7 text-[#dce8f2]">
+            Primary buyers: CTO, CISO, Head of AI, Chief Risk Officer, and Data Protection Officer.
+          </div>
+        </div>
       </div>
-    )
+    ),
   },
   {
     id: 8,
-    title: "Competitive Landscape",
-    subtitle: "Differentiated by deployment capability and governance.",
+    title: 'Commercial Model & Pricing',
+    subtitle: 'Include both India and global tiers',
     content: (
-      <div className="h-full flex flex-col justify-center">
-        <div className="space-y-10">
-          <div className="border-l focus:border-white/20 border-[#D4AF37] pl-8">
-            <strong className="block text-xs uppercase tracking-widest text-white mb-3">vs. Open Source (NeMo)</strong>
-            <span className="text-lg text-white/60 font-serif italic leading-relaxed">Sovereign-AI is fully productized with dashboards, RBAC, and policy packs.</span>
+      <div className="space-y-8">
+        <div className="grid gap-6 lg:grid-cols-2">
+          <div className="rounded-[34px] border border-[#23c6b7]/35 bg-[linear-gradient(180deg,rgba(18,49,64,0.95),rgba(9,20,32,0.97))] p-8">
+            <div className="flex items-center gap-3 text-[#7be0d6]">
+              <Landmark className="h-5 w-5" />
+              <span className="text-[11px] uppercase tracking-[0.28em]">India pricing</span>
+            </div>
+            <div className="mt-6 space-y-5">
+              <div className="rounded-2xl border border-white/10 bg-black/15 p-5">
+                <div className="text-xs uppercase tracking-[0.2em] text-[#9fd9d2]">Pilot</div>
+                <div className="mt-2 text-3xl font-semibold text-white">INR 18L-35L</div>
+                <div className="mt-2 text-sm leading-6 text-[#c4d6e2]">One workflow, one policy pack, integration, benchmarking, and audit demo.</div>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-black/15 p-5">
+                <div className="text-xs uppercase tracking-[0.2em] text-[#9fd9d2]">Annual platform</div>
+                <div className="mt-2 text-3xl font-semibold text-white">INR 60L-1.5Cr+</div>
+                <div className="mt-2 text-sm leading-6 text-[#c4d6e2]">Multiple workflows, Control Tower, support, audit exports, and additional India packs.</div>
+              </div>
+            </div>
           </div>
-          <div className="border-l border-[#D4AF37] pl-8">
-            <strong className="block text-xs uppercase tracking-widest text-white mb-3">vs. Cloud Safety APIs</strong>
-            <span className="text-lg text-white/60 font-serif italic leading-relaxed">We are model-agnostic and work in fully air-gapped private deployments (VPC/On-prem).</span>
-          </div>
-          <div className="border-l border-[#D4AF37] pl-8">
-            <strong className="block text-xs uppercase tracking-widest text-white mb-3">vs. Privacy Data Tools</strong>
-            <span className="text-lg text-white/60 font-serif italic leading-relaxed">Broader scope than just PII masking—we address injection, agent flow constraints, and governance audit logs.</span>
+
+          <div className="rounded-[34px] border border-white/10 bg-[#0b1724]/95 p-8">
+            <div className="flex items-center gap-3 text-[#7be0d6]">
+              <Globe className="h-5 w-5" />
+              <span className="text-[11px] uppercase tracking-[0.28em]">Global pricing</span>
+            </div>
+            <div className="mt-6 space-y-5">
+              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                <div className="text-xs uppercase tracking-[0.2em] text-[#9fd9d2]">Pilot</div>
+                <div className="mt-2 text-3xl font-semibold text-white">$25k-$60k</div>
+                <div className="mt-2 text-sm leading-6 text-[#c4d6e2]">High-impact AI workflow, red-team cases, dashboard, and deployment design.</div>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                <div className="text-xs uppercase tracking-[0.2em] text-[#9fd9d2]">Annual platform</div>
+                <div className="mt-2 text-3xl font-semibold text-white">$150k-$500k+</div>
+                <div className="mt-2 text-sm leading-6 text-[#c4d6e2]">Cross-application runtime governance, multiple packs, enterprise support, and custom controls.</div>
+              </div>
+            </div>
           </div>
         </div>
+
+        <div className="grid gap-4 md:grid-cols-3">
+          <MetricCard value="Base platform" label="Runtime enforcement engine + Control Tower + core pack." source="Recurring revenue" />
+          <MetricCard value="Pack upsell" label="DPDP, RBI, HIPAA, GDPR, agentic AI, and customer-specific policy modules." source="Expansion revenue" />
+          <MetricCard value="Services attach" label="Red-team audit, deployment design, tuning, and proof workshops." source="High-margin entry" />
+        </div>
       </div>
-    )
+    ),
   },
   {
     id: 9,
-    title: "Commercial Strategy",
-    subtitle: "Land and Expand approach for high-ACV enterprise.",
+    title: 'Proof Assets & Roadmap',
+    subtitle: 'What de-risks the buyer and what scales the company',
     content: (
-      <div className="h-full grid grid-cols-2 gap-8 content-center">
-        <div className="bg-[#D4AF37] text-black p-12 flex flex-col justify-between aspect-square hover:-translate-y-1 transition-transform duration-300">
-          <div>
-            <h3 className="text-[10px] font-bold uppercase tracking-widest mb-6 border-b border-black/20 pb-4">Phase I: Land</h3>
-            <h4 className="text-4xl font-serif mb-4">Paid Pilot</h4>
-            <p className="text-sm font-medium text-black/70">4-6 weeks to secure 1 GTM AI App</p>
+      <div className="grid h-full gap-8 lg:grid-cols-[1fr_1fr]">
+        <div className="rounded-[32px] border border-white/10 bg-[#091321]/92 p-8">
+          <Eyebrow>Proof assets</Eyebrow>
+          <div className="mt-6 grid gap-3">
+            {[
+              'Tier latency benchmark: Tier 1 vs Tier 2 vs Tier 3',
+              'Before / after redaction screenshot with India PII examples',
+              'Injection attempt trace with allow / redact / block decision path',
+              'Control Tower UI screenshot showing evidence, severity, and policy rule hit',
+              'Policy YAML excerpt showing how jurisdiction logic changes without code changes',
+            ].map((proof) => (
+              <div key={proof} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-sm leading-6 text-[#dce8f2]">
+                {proof}
+              </div>
+            ))}
           </div>
-          <div className="text-6xl font-light">$25k<span className="text-2xl text-black/50 ml-2 uppercase font-sans tracking-widest text-[10px]">Baseline</span></div>
         </div>
-        <div className="bg-white/[0.02] border border-white/10 p-12 flex flex-col justify-between aspect-square hover:-translate-y-1 transition-transform duration-300 hover:border-[#D4AF37]/50">
-          <div>
-            <h3 className="text-[10px] font-bold uppercase tracking-widest text-[#D4AF37] mb-6 border-b border-white/10 pb-4">Phase II: Expand</h3>
-            <h4 className="text-4xl font-serif text-white mb-4">Enterprise Label</h4>
-            <p className="text-sm font-light text-white/50">Annual recurring cross-application licensing</p>
+
+        <div className="rounded-[32px] border border-white/10 bg-[#0b1724]/92 p-8">
+          <Eyebrow>Roadmap</Eyebrow>
+          <div className="mt-6 space-y-5">
+            {[
+              ['Now', 'India BFSI and healthtech pilots with proof-grade runtime evidence.'],
+              ['Next', 'Package India compliance modules into repeatable policy-pack SKUs.'],
+              ['Then', 'Launch GDPR, HIPAA, and agentic AI packs for global expansion.'],
+              ['Later', 'Build marketplace-style pack distribution, stronger benchmarks, and SIEM integrations.'],
+            ].map(([phase, detail], index) => (
+              <div key={phase} className="flex gap-4">
+                <div className="flex flex-col items-center">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[#23c6b7]/45 text-sm font-semibold text-[#7be0d6]">
+                    {index + 1}
+                  </div>
+                  {index < 3 ? <div className="mt-2 h-full w-px bg-white/10" /> : null}
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                  <div className="text-xs uppercase tracking-[0.18em] text-[#7be0d6]">{phase}</div>
+                  <div className="mt-2 text-[15px] leading-7 text-[#dae7f1]">{detail}</div>
+                </div>
+              </div>
+            ))}
           </div>
-          <div className="text-6xl font-light text-white">$200k+ <span className="text-sm text-[#D4AF37] font-mono tracking-widest uppercase ml-2">ARR</span></div>
         </div>
       </div>
-    )
+    ),
   },
   {
     id: 10,
-    title: "The Roadmap",
-    subtitle: "Where we are heading in 12-18 months.",
+    title: 'Final Verdict / Ask',
+    subtitle: 'Why this wins and what we want now',
     content: (
-      <div className="flex flex-col justify-center h-full">
-        <div className="pl-6 border-l border-[#D4AF37]/30 space-y-10 py-4">
-          <div className="relative">
-            <span className="absolute -left-[30px] top-2.5 w-2 h-2 bg-[#D4AF37] rounded-full shadow-[0_0_10px_#D4AF37]"></span>
-            <span className="text-xl font-serif text-white tracking-wide">Policy Pack Marketplace Launch</span>
+      <div className="grid h-full gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+        <div className="rounded-[34px] border border-[#23c6b7]/35 bg-[radial-gradient(circle_at_top_left,rgba(35,198,183,0.22),rgba(8,19,31,0.97)_55%)] p-10">
+          <Eyebrow>Closing thesis</Eyebrow>
+          <h3 className="mt-7 max-w-4xl text-5xl font-semibold leading-[1.08] text-white">
+            India gives Sovereign-AI the perfect first wedge. Policy packs turn that wedge into a global platform.
+          </h3>
+          <div className="mt-8">
+            <BulletList
+              items={[
+                'The category is real: configurable AI runtime governance platform.',
+                'The timing is real: regulation, OWASP pressure, and enterprise buying behavior now converge.',
+                'The wedge is real: India BFSI and healthtech have urgent, local, explainable needs.',
+                'The moat is real: policy-vs-enforcement separation compounds into reusable packs and higher ACV.',
+              ]}
+            />
           </div>
-          <div className="relative opacity-60 hover:opacity-100 transition-opacity">
-            <span className="absolute -left-[29px] top-2.5 w-1.5 h-1.5 bg-white/40 rounded-full"></span>
-            <span className="text-xl font-serif text-white tracking-wide">Compliance Evidence Auto-Export (SOC2/ISO)</span>
+        </div>
+
+        <div className="rounded-[34px] border border-white/10 bg-[#0b1724]/95 p-8">
+          <div className="flex items-center gap-3 text-[#7be0d6]">
+            <CircleDollarSign className="h-5 w-5" />
+            <span className="text-[11px] uppercase tracking-[0.28em]">The ask</span>
           </div>
-          <div className="relative opacity-60 hover:opacity-100 transition-opacity">
-            <span className="absolute -left-[29px] top-2.5 w-1.5 h-1.5 bg-white/40 rounded-full"></span>
-            <span className="text-xl font-serif text-white tracking-wide">Benchmark Metrics Dashboard Expansion</span>
+          <div className="mt-7 space-y-4">
+            {[
+              '3 India BFSI or healthtech pilot design partners',
+              'Investor and enterprise introductions for regulated AI deployments',
+              'Strategic conversations with CTO, CISO, and Head of AI buyers now',
+            ].map((ask) => (
+              <div key={ask} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-[15px] leading-7 text-white">
+                {ask}
+              </div>
+            ))}
           </div>
-          <div className="relative opacity-60 hover:opacity-100 transition-opacity">
-            <span className="absolute -left-[29px] top-2.5 w-1.5 h-1.5 bg-white/40 rounded-full"></span>
-            <span className="text-xl font-serif text-white tracking-wide">Cloud SIEM Integrations (Splunk, Datadog)</span>
+          <div className="mt-8 rounded-2xl border border-[#23c6b7]/30 bg-[#112736] p-5">
+            <div className="text-xs uppercase tracking-[0.2em] text-[#8de9e0]">Meeting outcome</div>
+            <div className="mt-2 text-lg text-white">Pilot scoping session within 14 days</div>
           </div>
         </div>
       </div>
-    )
-  }
+    ),
+  },
 ];
+
+export const investorDeckOutline = slides.map((slide) => ({
+  id: slide.id,
+  title: slide.title,
+  subtitle: slide.subtitle,
+}));
 
 export function PitchDeck() {
   const [activeSlide, setActiveSlide] = useState(0);
+  const currentSlide = slides[activeSlide];
 
-  const nextSlide = () => setActiveSlide(prev => Math.min(prev + 1, slides.length - 1));
-  const prevSlide = () => setActiveSlide(prev => Math.max(prev - 1, 0));
+  const nextSlide = () => setActiveSlide((prev) => Math.min(prev + 1, slides.length - 1));
+  const prevSlide = () => setActiveSlide((prev) => Math.max(prev - 1, 0));
 
   return (
-    <div className="max-w-6xl mx-auto py-12 px-8 h-full flex flex-col">
-      <div className="flex justify-between items-center mb-8 shrink-0">
-        <div className="font-mono text-xs tracking-widest text-white/40">SLIDE <span className="text-[#D4AF37]">{activeSlide + 1}</span> OF {slides.length}</div>
-        <div className="flex space-x-2">
-          <button onClick={prevSlide} disabled={activeSlide === 0} className="p-3 border border-white/10 hover:border-white/30 disabled:opacity-20 transition-colors">
-            <ChevronLeft className="w-5 h-5 text-white" />
+    <div className="mx-auto flex h-full max-w-[1280px] flex-col px-8 py-10">
+      <div className="mb-6 flex items-center justify-between gap-4">
+        <div className="flex items-center gap-4">
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-[#23c6b7]/40 bg-[#102235] text-[#7be0d6]">
+            <Sparkles className="h-5 w-5" />
+          </div>
+          <div>
+            <div className="text-[11px] uppercase tracking-[0.28em] text-[#7be0d6]">Investor / Enterprise Deck</div>
+            <div className="mt-1 text-2xl font-semibold text-white">Sovereign-AI</div>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <div className="hidden rounded-full border border-white/10 bg-[#0c1827]/90 px-4 py-2 text-[11px] uppercase tracking-[0.24em] text-[#8da4bb] md:block">
+            Slide <span className="text-white">{activeSlide + 1}</span> / {slides.length}
+          </div>
+          <button
+            onClick={prevSlide}
+            disabled={activeSlide === 0}
+            className="rounded-2xl border border-white/10 bg-[#0c1827]/90 p-3 text-white transition-colors hover:border-[#23c6b7]/30 disabled:opacity-30"
+          >
+            <ChevronLeft className="h-5 w-5" />
           </button>
-          <button onClick={nextSlide} disabled={activeSlide === slides.length - 1} className="p-3 border border-white/10 hover:border-white/30 disabled:opacity-20 transition-colors">
-            <ChevronRight className="w-5 h-5 text-white" />
+          <button
+            onClick={nextSlide}
+            disabled={activeSlide === slides.length - 1}
+            className="rounded-2xl border border-white/10 bg-[#0c1827]/90 p-3 text-white transition-colors hover:border-[#23c6b7]/30 disabled:opacity-30"
+          >
+            <ChevronRight className="h-5 w-5" />
           </button>
         </div>
       </div>
-      
-      <div className="flex-1 bg-white/[0.02] border border-white/10 flex flex-col">
-        <div className="px-12 py-10 border-b border-white/10 shrink-0">
-          <h2 className="text-3xl font-serif text-white">{slides[activeSlide].title}</h2>
-          {slides[activeSlide].subtitle && <p className="text-white/40 text-sm font-light uppercase tracking-widest mt-4">{slides[activeSlide].subtitle}</p>}
-        </div>
-        <div className="flex-1 p-12 overflow-y-auto">
-          {slides[activeSlide].content}
-        </div>
+
+      <div className="grid flex-1 gap-6 lg:grid-cols-[280px_1fr]">
+        <aside className="rounded-[32px] border border-white/10 bg-[#07111d]/92 p-5">
+          <div className="mb-5 flex items-center gap-3 text-[#7be0d6]">
+            <FileStack className="h-5 w-5" />
+            <span className="text-[11px] uppercase tracking-[0.28em]">Narrative flow</span>
+          </div>
+          <div className="space-y-2">
+            {slides.map((slide, index) => {
+              const isActive = index === activeSlide;
+              return (
+                <button
+                  key={slide.id}
+                  onClick={() => setActiveSlide(index)}
+                  className={`w-full rounded-2xl border px-4 py-4 text-left transition-colors ${
+                    isActive
+                      ? 'border-[#23c6b7]/35 bg-[#0f2331]'
+                      : 'border-transparent bg-transparent hover:border-white/10 hover:bg-white/[0.03]'
+                  }`}
+                >
+                  <div className="flex items-start gap-3">
+                    <div
+                      className={`mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border text-xs font-semibold ${
+                        isActive
+                          ? 'border-[#23c6b7]/45 text-[#7be0d6]'
+                          : 'border-white/10 text-white/50'
+                      }`}
+                    >
+                      {slide.id}
+                    </div>
+                    <div>
+                      <div className={`text-sm font-medium ${isActive ? 'text-white' : 'text-white/70'}`}>{slide.title}</div>
+                      <div className="mt-1 text-[11px] uppercase tracking-[0.18em] text-white/35">{slide.subtitle}</div>
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="mt-6 rounded-[26px] border border-white/10 bg-[#0b1724] p-4">
+            <div className="flex items-center gap-2 text-[#7be0d6]">
+              <Waypoints className="h-4 w-4" />
+              <span className="text-[10px] uppercase tracking-[0.24em]">Deck intent</span>
+            </div>
+            <p className="mt-3 text-sm leading-6 text-[#b4c6d8]">
+              Drive a pilot meeting by making the category legible, the wedge urgent, and the moat repeatable.
+            </p>
+            <div className="mt-4 flex items-center gap-2 text-[#9fb5ca]">
+              <Radar className="h-4 w-4" />
+              <span className="text-[11px] uppercase tracking-[0.18em]">Investor + CTO + CISO ready</span>
+            </div>
+          </div>
+        </aside>
+
+        <section className="overflow-hidden rounded-[38px] border border-white/10 bg-[linear-gradient(180deg,rgba(10,18,30,0.98),rgba(7,13,22,0.98))] shadow-[0_30px_80px_rgba(0,0,0,0.28)]">
+          <div className="border-b border-white/10 px-10 py-7">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <div className="text-[11px] uppercase tracking-[0.28em] text-[#7be0d6]">{currentSlide.subtitle}</div>
+                <h2 className="mt-3 text-4xl font-semibold tracking-tight text-white">{currentSlide.title}</h2>
+              </div>
+              <div className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-[11px] uppercase tracking-[0.22em] text-white/45">
+                Sovereign-AI / 24 May 2026 narrative
+              </div>
+            </div>
+          </div>
+          <div className="h-[calc(100vh-195px)] overflow-y-auto p-8 lg:p-10">{currentSlide.content}</div>
+        </section>
       </div>
     </div>
   );
