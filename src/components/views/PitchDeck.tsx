@@ -39,17 +39,17 @@ function MetricCard({
   source: string;
 }) {
   return (
-    <div className="rounded-3xl border border-white/10 bg-[#0b1724]/85 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
-      <div className="text-3xl font-semibold text-white">{value}</div>
-      <div className="mt-2 text-sm leading-relaxed text-[#b4c3d3]">{label}</div>
-      <div className="mt-4 text-[10px] uppercase tracking-[0.22em] text-[#7be0d6]/80">{source}</div>
+    <div className="flex h-full flex-col rounded-3xl border border-white/10 bg-[#0b1724]/85 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
+      <div className="text-[2rem] font-semibold leading-tight text-white">{value}</div>
+      <div className="mt-3 flex-1 text-sm leading-6 text-[#b4c3d3]">{label}</div>
+      <div className="mt-5 text-[10px] uppercase tracking-[0.22em] text-[#7be0d6]/80">{source}</div>
     </div>
   );
 }
 
 function BulletList({ items }: { items: string[] }) {
   return (
-    <ul className="space-y-4">
+    <ul className="space-y-4.5">
       {items.map((item) => (
         <li key={item} className="flex items-start gap-3 text-[15px] leading-7 text-[#d9e6f2]">
           <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#23c6b7]" />
@@ -72,7 +72,7 @@ function TierCard({
   accent: string;
 }) {
   return (
-    <div className="rounded-[28px] border border-white/10 bg-[#0d1b29]/85 p-6">
+    <div className="flex h-full flex-col rounded-[28px] border border-white/10 bg-[#0d1b29]/85 p-6">
       <div
         className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border text-sm font-semibold tracking-[0.2em]"
         style={{ borderColor: accent, color: accent }}
@@ -80,7 +80,7 @@ function TierCard({
         {code}
       </div>
       <h4 className="mt-5 text-lg font-semibold text-white">{title}</h4>
-      <p className="mt-3 text-sm leading-6 text-[#aebfd0]">{detail}</p>
+      <p className="mt-3 flex-1 text-sm leading-6 text-[#aebfd0]">{detail}</p>
     </div>
   );
 }
@@ -96,7 +96,7 @@ function PolicyPack({
 }) {
   return (
     <div
-      className={`rounded-[26px] border p-5 ${
+      className={`flex h-full flex-col rounded-[26px] border p-5 ${
         featured
           ? 'border-[#23c6b7]/60 bg-[linear-gradient(180deg,rgba(35,198,183,0.16),rgba(11,23,36,0.95))]'
           : 'border-white/10 bg-[#0b1724]/88'
@@ -108,7 +108,7 @@ function PolicyPack({
           Pack
         </span>
       </div>
-      <p className="mt-4 text-sm leading-6 text-[#b5c6d8]">{note}</p>
+      <p className="mt-4 flex-1 text-sm leading-6 text-[#b5c6d8]">{note}</p>
     </div>
   );
 }
@@ -193,7 +193,7 @@ const slides: Slide[] = [
       <div className="grid h-full gap-8 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="rounded-[32px] border border-white/10 bg-[#091321]/92 p-10">
           <Eyebrow>Runtime blind spot</Eyebrow>
-          <h3 className="mt-7 max-w-3xl text-4xl font-semibold leading-tight text-white">
+          <h3 className="mt-7 max-w-3xl text-[clamp(2.25rem,3vw,3rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-white">
             Enterprise GenAI is entering production faster than governance can enforce it.
           </h3>
           <div className="mt-8">
@@ -355,7 +355,7 @@ const slides: Slide[] = [
       <div className="grid h-full gap-8 lg:grid-cols-[0.95fr_1.05fr]">
         <div className="rounded-[32px] border border-white/10 bg-[#08131f]/92 p-8">
           <Eyebrow>Core moat</Eyebrow>
-          <h3 className="mt-6 text-4xl font-semibold leading-tight text-white">
+          <h3 className="mt-6 text-[clamp(2.2rem,2.9vw,3rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-white">
             The moat is not a single classifier. It is policy-vs-enforcement separation.
           </h3>
           <div className="mt-8">
@@ -603,7 +603,7 @@ const slides: Slide[] = [
       <div className="grid h-full gap-8 lg:grid-cols-[1.15fr_0.85fr]">
         <div className="rounded-[34px] border border-[#23c6b7]/35 bg-[radial-gradient(circle_at_top_left,rgba(35,198,183,0.22),rgba(8,19,31,0.97)_55%)] p-10">
           <Eyebrow>Closing thesis</Eyebrow>
-          <h3 className="mt-7 max-w-4xl text-5xl font-semibold leading-[1.08] text-white">
+          <h3 className="mt-7 max-w-4xl text-[clamp(2.7rem,3.7vw,4.6rem)] font-semibold leading-[1.06] tracking-[-0.03em] text-white">
             India gives Sovereign-AI the perfect first wedge. Policy packs turn that wedge into a global platform.
           </h3>
           <div className="mt-8">
@@ -752,7 +752,7 @@ export function PitchDeck() {
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
                 <div className="text-[11px] uppercase tracking-[0.28em] text-[#7be0d6]">{currentSlide.subtitle}</div>
-                <h2 className="mt-3 text-4xl font-semibold tracking-tight text-white">{currentSlide.title}</h2>
+                <h2 className="mt-3 text-[clamp(2.4rem,3vw,3.1rem)] font-semibold tracking-[-0.03em] text-white">{currentSlide.title}</h2>
               </div>
               <div className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-[11px] uppercase tracking-[0.22em] text-white/45">
                 Sovereign-AI / 24 May 2026 narrative
