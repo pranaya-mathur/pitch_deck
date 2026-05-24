@@ -33,14 +33,16 @@ function MetricCard({
   value,
   label,
   source,
+  valueClassName,
 }: {
   value: string;
   label: string;
   source: string;
+  valueClassName?: string;
 }) {
   return (
     <div className="flex h-full flex-col rounded-3xl border border-white/10 bg-[#0b1724]/85 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
-      <div className="text-[2rem] font-semibold leading-tight text-white">{value}</div>
+      <div className={`font-semibold leading-tight text-white ${valueClassName ?? 'text-[2rem]'}`}>{value}</div>
       <div className="mt-3 flex-1 text-sm leading-6 text-[#b4c3d3]">{label}</div>
       <div className="mt-5 text-[10px] uppercase tracking-[0.22em] text-[#7be0d6]/80">{source}</div>
     </div>
@@ -132,10 +134,25 @@ const slides: Slide[] = [
               sensitive data, detect prompt injection, route edge cases through a three-tier engine, and create audit-ready evidence by default.
             </p>
           </div>
-          <div className="grid gap-4 pt-8 sm:grid-cols-3">
-            <MetricCard value="India BFSI + Healthtech" label="Perfect first wedge: acute compliance pain and local data sensitivity." source="Commercial beachhead" />
-            <MetricCard value="3-Tier Runtime Engine" label="Regex, semantic/vector, and LangGraph review in one enforcement path." source="Product architecture" />
-            <MetricCard value="Policy Packs" label="Reusable jurisdiction and domain packs create expansion without rewriting the core." source="Moat" />
+          <div className="grid gap-4 pt-8 md:grid-cols-2 xl:grid-cols-3">
+            <MetricCard
+              value="India BFSI"
+              valueClassName="text-[1.85rem]"
+              label="Perfect first wedge, with healthtech next: acute compliance pain and local data sensitivity."
+              source="Commercial beachhead"
+            />
+            <MetricCard
+              value="3-Tier Engine"
+              valueClassName="text-[1.85rem]"
+              label="Regex, semantic/vector, and LangGraph review in one enforcement path."
+              source="Product architecture"
+            />
+            <MetricCard
+              value="Policy Packs"
+              valueClassName="text-[1.85rem]"
+              label="Reusable jurisdiction and domain packs create expansion without rewriting the core."
+              source="Moat"
+            />
           </div>
         </div>
 
