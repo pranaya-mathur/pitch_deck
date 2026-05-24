@@ -122,40 +122,38 @@ const slides: Slide[] = [
     subtitle: 'Configurable AI Runtime Governance Platform',
     navSubtitle: 'Global governance thesis',
     content: (
-      <div className="grid h-full gap-6 lg:grid-cols-[1.08fr_0.92fr]">
-        <div className="rounded-[34px] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(35,198,183,0.20),rgba(9,18,30,0.92)_52%),linear-gradient(180deg,rgba(10,18,30,0.96),rgba(7,13,23,0.98))] p-8 xl:p-10">
-          <div className="max-w-4xl">
-            <Eyebrow>India-first wedge. Global category.</Eyebrow>
-            <h1 className="mt-8 max-w-[11.5ch] text-[clamp(3rem,4.4vw,4.8rem)] font-semibold leading-[0.98] tracking-[-0.04em] text-white">
-              Runtime governance for enterprise GenAI.
+      <div className="grid h-full gap-6 lg:grid-cols-[1.35fr_0.65fr]">
+        <div className="flex flex-col rounded-[34px] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(35,198,183,0.18),rgba(9,18,30,0.92)_48%),linear-gradient(180deg,rgba(10,18,30,0.98),rgba(7,13,23,0.98))] p-8 xl:p-10">
+          <Eyebrow>India-first wedge. Global category.</Eyebrow>
+          <div className="mt-8 max-w-5xl">
+            <p className="text-[12px] uppercase tracking-[0.28em] text-[#8be8df]">Sovereign-AI</p>
+            <h1 className="mt-4 max-w-[12ch] text-[clamp(3.5rem,5vw,5.8rem)] font-semibold leading-[0.94] tracking-[-0.05em] text-white">
+              The runtime governance layer for enterprise GenAI.
             </h1>
-            <p className="mt-5 max-w-3xl text-[1.35rem] font-medium leading-8 text-[#d9f5f1]">
-              Safe. Auditable. Configurable.
+            <p className="mt-6 max-w-3xl text-[1.2rem] leading-8 text-[#d8e6f3]">
+              Safe, auditable, and configurable controls between enterprise AI applications and model outputs.
             </p>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-[#b9cad9]">
-              Sovereign-AI is the configurable runtime governance layer for safe, auditable enterprise GenAI. It sits between enterprise AI applications and model outputs to enforce policy YAML, redact sensitive data, detect prompt injection, route edge cases through a three-tier engine, and create audit-ready evidence by default.
+            <p className="mt-4 max-w-3xl text-[16px] leading-7 text-[#9fb3c7]">
+              Enforce policy YAML, redact sensitive data, detect prompt injection, route edge cases through a three-tier engine, and generate audit-ready evidence by default.
             </p>
           </div>
 
           <div className="mt-10 grid gap-4 md:grid-cols-3">
-            <MetricCard
-              value="India BFSI"
-              valueClassName="text-[1.7rem]"
-              label="Best first wedge, with healthtech next: acute compliance pressure and local data sensitivity."
-              source="Commercial beachhead"
-            />
-            <MetricCard
-              value="3 tiers"
-              valueClassName="text-[1.7rem]"
-              label="Regex, semantic/vector, and LangGraph review in one enforcement path."
-              source="Product architecture"
-            />
-            <MetricCard
-              value="Policy Packs"
-              valueClassName="text-[1.7rem]"
-              label="Reusable jurisdiction and domain packs create expansion without rewriting the core."
-              source="Moat"
-            />
+            <div className="rounded-[26px] border border-white/10 bg-[#0d1a28]/88 p-5">
+              <div className="text-[11px] uppercase tracking-[0.22em] text-[#7be0d6]">Beachhead</div>
+              <div className="mt-3 text-[1.9rem] font-semibold leading-tight text-white">India BFSI</div>
+              <div className="mt-3 text-sm leading-6 text-[#b4c3d3]">Healthtech next. High compliance pressure. High data sensitivity.</div>
+            </div>
+            <div className="rounded-[26px] border border-white/10 bg-[#0d1a28]/88 p-5">
+              <div className="text-[11px] uppercase tracking-[0.22em] text-[#7be0d6]">Architecture</div>
+              <div className="mt-3 text-[1.9rem] font-semibold leading-tight text-white">3-tier engine</div>
+              <div className="mt-3 text-sm leading-6 text-[#b4c3d3]">Regex, semantic/vector, and LangGraph review in one enforcement path.</div>
+            </div>
+            <div className="rounded-[26px] border border-white/10 bg-[#0d1a28]/88 p-5">
+              <div className="text-[11px] uppercase tracking-[0.22em] text-[#7be0d6]">Moat</div>
+              <div className="mt-3 text-[1.9rem] font-semibold leading-tight text-white">Policy packs</div>
+              <div className="mt-3 text-sm leading-6 text-[#b4c3d3]">Reusable jurisdiction and domain packs without rewriting the core runtime.</div>
+            </div>
           </div>
         </div>
 
@@ -165,13 +163,13 @@ const slides: Slide[] = [
               <ShieldCheck className="h-5 w-5" />
               <span className="text-[10px] uppercase tracking-[0.2em]">What buyers feel</span>
             </div>
-            <div className="mt-5 grid gap-3">
+            <div className="mt-5 space-y-3">
               {[
-                'Ship GenAI faster without giving up runtime control.',
+                'Ship GenAI faster without losing runtime control.',
                 'Explain every allow, block, or redact decision with evidence.',
-                'Prove the model can start in India and scale globally.',
+                'Start in India and scale policy enforcement globally.',
               ].map((line) => (
-                <div key={line} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-[15px] leading-7 text-[#d9e6f2]">
+                <div key={line} className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-4 text-[15px] leading-7 text-[#d9e6f2]">
                   {line}
                 </div>
               ))}
@@ -179,25 +177,25 @@ const slides: Slide[] = [
           </div>
 
           <div className="rounded-[32px] border border-white/10 bg-[#0a1421]/92 p-7">
-            <div className="text-[11px] uppercase tracking-[0.28em] text-[#7be0d6]">Visual on slide</div>
+            <div className="text-[11px] uppercase tracking-[0.24em] text-[#7be0d6]">Runtime flow</div>
             <div className="mt-5 space-y-3">
               <div className="rounded-2xl border border-white/10 bg-[#102235] p-4">
-                <div className="text-xs uppercase tracking-[0.22em] text-white/70">App Layer</div>
-                <div className="mt-2 text-lg text-white">Copilot, Agent, Chatbot, Workflow</div>
+                <div className="text-[10px] uppercase tracking-[0.2em] text-white/60">Enterprise AI App</div>
+                <div className="mt-2 text-[1.1rem] leading-7 text-white">Copilot, agent, chatbot, workflow</div>
               </div>
               <div className="flex justify-center text-[#23c6b7]">
                 <ArrowRight className="h-5 w-5 rotate-90" />
               </div>
-              <div className="rounded-2xl border border-[#23c6b7]/30 bg-[linear-gradient(180deg,rgba(35,198,183,0.18),rgba(11,23,36,0.95))] p-4">
-                <div className="text-xs uppercase tracking-[0.22em] text-[#8ef3ea]">Sovereign-AI Runtime Layer</div>
-                <div className="mt-2 text-lg text-white">Policy enforcement, redaction, routing, audit trail</div>
+              <div className="rounded-2xl border border-[#23c6b7]/35 bg-[linear-gradient(180deg,rgba(35,198,183,0.18),rgba(11,23,36,0.95))] p-4">
+                <div className="text-[10px] uppercase tracking-[0.2em] text-[#9ff7ef]">Sovereign-AI Runtime</div>
+                <div className="mt-2 text-[1.1rem] leading-7 text-white">Policy enforcement, redaction, routing, audit trail</div>
               </div>
               <div className="flex justify-center text-[#23c6b7]">
                 <ArrowRight className="h-5 w-5 rotate-90" />
               </div>
               <div className="rounded-2xl border border-white/10 bg-[#102235] p-4">
-                <div className="text-xs uppercase tracking-[0.22em] text-white/70">Model Layer</div>
-                <div className="mt-2 text-lg text-white">OpenAI, Azure, Bedrock, Vertex, Ollama</div>
+                <div className="text-[10px] uppercase tracking-[0.2em] text-white/60">Model Layer</div>
+                <div className="mt-2 text-[1.1rem] leading-7 text-white">OpenAI, Azure, Bedrock, Vertex, Ollama</div>
               </div>
             </div>
           </div>
