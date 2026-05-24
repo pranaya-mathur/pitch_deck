@@ -120,11 +120,11 @@ const slides: Slide[] = [
     subtitle: 'Configurable AI Runtime Governance Platform',
     navSubtitle: 'Global governance thesis',
     content: (
-      <div className="grid h-full gap-8 lg:grid-cols-[1.25fr_0.75fr]">
-        <div className="flex flex-col justify-between rounded-[34px] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(35,198,183,0.20),rgba(9,18,30,0.92)_52%),linear-gradient(180deg,rgba(10,18,30,0.96),rgba(7,13,23,0.98))] p-10">
+      <div className="grid h-full gap-8 lg:grid-cols-[1.35fr_0.65fr]">
+        <div className="flex flex-col justify-between rounded-[34px] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(35,198,183,0.20),rgba(9,18,30,0.92)_52%),linear-gradient(180deg,rgba(10,18,30,0.96),rgba(7,13,23,0.98))] p-9 xl:p-10">
           <div>
             <Eyebrow>India-first wedge. Global category.</Eyebrow>
-            <h1 className="mt-8 max-w-4xl text-[clamp(3.5rem,5vw,5.6rem)] font-semibold leading-[1.02] text-white">
+            <h1 className="mt-8 max-w-[12.5ch] text-[clamp(3.1rem,4.2vw,5rem)] font-semibold leading-[1.04] tracking-[-0.03em] text-white">
               Sovereign-AI is the configurable runtime governance layer for safe, auditable enterprise GenAI.
             </h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-[#b9cad9]">
@@ -140,12 +140,12 @@ const slides: Slide[] = [
         </div>
 
         <div className="grid gap-4">
-          <div className="rounded-[32px] border border-[#23c6b7]/20 bg-[#0b1724]/92 p-8">
+          <div className="rounded-[32px] border border-[#23c6b7]/20 bg-[#0b1724]/92 p-7">
             <div className="flex items-center gap-3 text-[#7be0d6]">
               <ShieldCheck className="h-5 w-5" />
               <span className="text-[11px] uppercase tracking-[0.28em]">What buyers feel</span>
             </div>
-            <div className="mt-6 space-y-4">
+            <div className="mt-5 space-y-3.5">
               {[
                 'We can ship GenAI faster without losing control.',
                 'We can prove why a prompt or output was allowed, blocked, or redacted.',
@@ -157,9 +157,9 @@ const slides: Slide[] = [
               ))}
             </div>
           </div>
-          <div className="rounded-[32px] border border-white/10 bg-[#0a1421]/92 p-8">
+          <div className="rounded-[32px] border border-white/10 bg-[#0a1421]/92 p-7">
             <div className="text-[11px] uppercase tracking-[0.28em] text-[#7be0d6]">Visual on slide</div>
-            <div className="mt-5 space-y-4">
+            <div className="mt-5 space-y-3.5">
               <div className="rounded-2xl border border-white/10 bg-[#102235] p-4">
                 <div className="text-xs uppercase tracking-[0.22em] text-white/70">App Layer</div>
                 <div className="mt-2 text-lg text-white">Copilot, Agent, Chatbot, Workflow</div>
@@ -658,7 +658,7 @@ export function PitchDeck() {
   const prevSlide = () => setActiveSlide((prev) => Math.max(prev - 1, 0));
 
   return (
-    <div className="mx-auto flex h-full max-w-[1280px] flex-col px-8 py-10">
+    <div className="mx-auto flex h-full max-w-[1320px] flex-col px-8 py-10">
       <div className="mb-6 flex items-center justify-between gap-4">
         <div className="flex items-center gap-4">
           <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-[#23c6b7]/40 bg-[#102235] text-[#7be0d6]">
