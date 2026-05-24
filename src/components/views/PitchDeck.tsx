@@ -122,61 +122,65 @@ const slides: Slide[] = [
     subtitle: 'Configurable AI Runtime Governance Platform',
     navSubtitle: 'Global governance thesis',
     content: (
-      <div className="grid h-full gap-8 lg:grid-cols-[1.16fr_0.84fr]">
-        <div className="flex flex-col justify-between rounded-[34px] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(35,198,183,0.20),rgba(9,18,30,0.92)_52%),linear-gradient(180deg,rgba(10,18,30,0.96),rgba(7,13,23,0.98))] p-9 xl:p-10">
-          <div>
+      <div className="grid h-full gap-6 lg:grid-cols-[1.08fr_0.92fr]">
+        <div className="rounded-[34px] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(35,198,183,0.20),rgba(9,18,30,0.92)_52%),linear-gradient(180deg,rgba(10,18,30,0.96),rgba(7,13,23,0.98))] p-8 xl:p-10">
+          <div className="max-w-4xl">
             <Eyebrow>India-first wedge. Global category.</Eyebrow>
-            <h1 className="mt-8 max-w-[14.5ch] text-[clamp(2.55rem,3.35vw,4rem)] font-semibold leading-[1.06] tracking-[-0.03em] text-white">
-              Sovereign-AI is the configurable runtime governance layer for safe, auditable enterprise GenAI.
+            <h1 className="mt-8 max-w-[11.5ch] text-[clamp(3rem,4.4vw,4.8rem)] font-semibold leading-[0.98] tracking-[-0.04em] text-white">
+              Runtime governance for enterprise GenAI.
             </h1>
+            <p className="mt-5 max-w-3xl text-[1.35rem] font-medium leading-8 text-[#d9f5f1]">
+              Safe. Auditable. Configurable.
+            </p>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-[#b9cad9]">
-              The enterprise control plane between AI applications and model outputs: enforce policy YAML, redact
-              sensitive data, detect prompt injection, route edge cases through a three-tier engine, and create audit-ready evidence by default.
+              Sovereign-AI is the configurable runtime governance layer for safe, auditable enterprise GenAI. It sits between enterprise AI applications and model outputs to enforce policy YAML, redact sensitive data, detect prompt injection, route edge cases through a three-tier engine, and create audit-ready evidence by default.
             </p>
           </div>
-          <div className="grid gap-4 pt-8 md:grid-cols-2 xl:grid-cols-3">
+
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
             <MetricCard
               value="India BFSI"
-              valueClassName="text-[1.85rem]"
-              label="Perfect first wedge, with healthtech next: acute compliance pain and local data sensitivity."
+              valueClassName="text-[1.7rem]"
+              label="Best first wedge, with healthtech next: acute compliance pressure and local data sensitivity."
               source="Commercial beachhead"
             />
             <MetricCard
-              value="3-Tier Engine"
-              valueClassName="text-[1.85rem]"
+              value="3 tiers"
+              valueClassName="text-[1.7rem]"
               label="Regex, semantic/vector, and LangGraph review in one enforcement path."
               source="Product architecture"
             />
             <MetricCard
               value="Policy Packs"
-              valueClassName="text-[1.85rem]"
+              valueClassName="text-[1.7rem]"
               label="Reusable jurisdiction and domain packs create expansion without rewriting the core."
               source="Moat"
             />
           </div>
         </div>
 
-        <div className="grid gap-4">
+        <div className="grid gap-6">
           <div className="rounded-[32px] border border-[#23c6b7]/20 bg-[#0b1724]/92 p-7">
             <div className="flex items-center gap-3 text-[#7be0d6]">
               <ShieldCheck className="h-5 w-5" />
               <span className="text-[10px] uppercase tracking-[0.2em]">What buyers feel</span>
             </div>
-            <div className="mt-5 space-y-3.5">
+            <div className="mt-5 grid gap-3">
               {[
                 'Ship GenAI faster without giving up runtime control.',
                 'Explain every allow, block, or redact decision with evidence.',
                 'Prove the model can start in India and scale globally.',
               ].map((line) => (
-                <div key={line} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-sm leading-6 text-[#d9e6f2]">
+                <div key={line} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-[15px] leading-7 text-[#d9e6f2]">
                   {line}
                 </div>
               ))}
             </div>
           </div>
+
           <div className="rounded-[32px] border border-white/10 bg-[#0a1421]/92 p-7">
             <div className="text-[11px] uppercase tracking-[0.28em] text-[#7be0d6]">Visual on slide</div>
-            <div className="mt-5 space-y-3.5">
+            <div className="mt-5 space-y-3">
               <div className="rounded-2xl border border-white/10 bg-[#102235] p-4">
                 <div className="text-xs uppercase tracking-[0.22em] text-white/70">App Layer</div>
                 <div className="mt-2 text-lg text-white">Copilot, Agent, Chatbot, Workflow</div>
