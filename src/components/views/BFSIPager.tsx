@@ -23,7 +23,7 @@ export function BFSIPager() {
           <section>
             <h2 className="text-xs font-bold text-white/50 uppercase tracking-[0.2em] mb-6 pb-4 border-b border-white/10">The Challenge</h2>
             <p className="text-white/80 leading-relaxed text-lg font-serif italic">
-              Financial institutions face intense pressure to adopt LLMs for customer support and advisor copilots, yet they are blocked by strict constraints on customer data leakage (DPDP, GDPR), model hallucinations providing financial advice, and audit requirements. Static documentation is no longer sufficient; regulators demand <strong className="text-[#D4AF37] font-normal not-italic">runtime evidence</strong>.
+              Financial institutions face intense pressure to adopt LLMs for customer support and advisor copilots, yet they are blocked by strict constraints on customer data leakage (DPDP, GDPR), model hallucinations providing financial advice, and audit requirements. Static documentation is no longer sufficient; regulated buyers increasingly expect <strong className="text-[#D4AF37] font-normal not-italic">runtime evidence and audit-ready controls</strong>.
             </p>
           </section>
 

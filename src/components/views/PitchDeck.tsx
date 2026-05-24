@@ -296,9 +296,9 @@ const slides: Slide[] = [
     content: (
       <div className="space-y-8">
         <div className="grid gap-4 lg:grid-cols-3">
-          <MetricCard value="1 Aug 2024" label="EU AI Act entered into force; obligations are phasing in now across prohibited use, GPAI, and high-risk systems." source="European Commission" />
-          <MetricCard value="26 Jul 2024" label="NIST released its Generative AI Profile under the AI RMF, turning governance into an operating requirement." source="NIST" />
-          <MetricCard value="5 Jan 2025" label="India published Draft DPDP Rules 2025, pushing data fiduciaries toward operational compliance and audits." source="MeitY / PIB" />
+          <MetricCard value="1 Aug 2024" label="EU AI Act entered into force; obligations are now phasing in across prohibited practices, GPAI, and high-risk systems." source="EC, 2024" />
+          <MetricCard value="26 Jul 2024" label="NIST released the Generative AI Profile as a companion resource to the AI RMF for GenAI risk management." source="NIST AI 600-1" />
+          <MetricCard value="5 Jan 2025" label="India published the Draft DPDP Rules 2025, operationalizing the DPDP Act with audit and compliance implications." source="MeitY / PIB" />
         </div>
 
         <div className="grid gap-8 lg:grid-cols-[1fr_1fr]">
@@ -307,12 +307,15 @@ const slides: Slide[] = [
             <BulletList
               items={[
                 'EU AI Act obligations are no longer abstract; organizations need operational controls and evidence trails.',
-                'NIST AI RMF plus the GenAI Profile gives U.S. enterprises a governance reference that procurement teams now recognize.',
-                'OWASP LLM Top 10 made runtime threats like prompt injection and insecure output handling board-visible.',
+                'NIST AI RMF plus the GenAI Profile gives enterprises a concrete reference for GenAI risk management.',
+                'OWASP LLM Top 10 formalized common runtime risks such as prompt injection, insecure output handling, and sensitive information disclosure.',
                 'India now combines DPDP momentum with RBI IT governance and data-handling pressure in regulated sectors.',
                 'Gartner projects AI governance spend at $492M in 2026 and above $1B by 2030.',
               ]}
             />
+            <p className="mt-6 text-[10px] uppercase tracking-[0.2em] text-[#7be0d6]/80">
+              Sources: European Commission AI Act (2024), NIST AI 600-1 (2024), MeitY Draft DPDP Rules (2025), RBI IT Governance Directions (2023), OWASP LLM Top 10 (v1.1 / 2025), Gartner (17 Feb 2026)
+            </p>
           </div>
 
           <div className="rounded-[32px] border border-white/10 bg-[#0b1724]/92 p-8">
@@ -322,8 +325,8 @@ const slides: Slide[] = [
                 ['2024', 'EU AI Act enters into force', 'left-[8%]'],
                 ['2024', 'NIST GenAI Profile released', 'left-[28%]'],
                 ['2025', 'Draft DPDP Rules published', 'left-[50%]'],
-                ['2025', 'OWASP GenAI security becomes standard buying language', 'left-[68%]'],
-                ['2026', 'AI governance budget line item hardens', 'left-[86%]'],
+                ['2025', 'OWASP LLM Top 10 v1.1 reinforces a shared GenAI risk baseline', 'left-[68%]'],
+                ['2026', 'Gartner identifies AI governance as a fast-growing spending category', 'left-[86%]'],
               ].map(([year, note, position]) => (
                 <div key={note} className="relative rounded-2xl border border-white/10 bg-white/[0.03] p-4">
                   <div className="text-[10px] uppercase tracking-[0.22em] text-[#7be0d6]">{year}</div>

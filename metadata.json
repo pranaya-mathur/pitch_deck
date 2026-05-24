@@ -1,6 +1,6 @@
 {
-  "name": "",
-  "description": "",
+  "name": "Sovereign-AI",
+  "description": "Runtime governance layer for safe, auditable enterprise GenAI.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
