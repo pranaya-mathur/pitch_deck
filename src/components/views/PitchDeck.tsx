@@ -128,8 +128,8 @@ const slides: Slide[] = [
               Sovereign-AI is the configurable runtime governance layer for safe, auditable enterprise GenAI.
             </h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-[#b9cad9]">
-              The control plane between enterprise AI applications and model outputs: enforce policy YAML, redact
-              sensitive data, detect prompt injection, route risk through a three-tier engine, and generate audit-ready evidence.
+              The enterprise control plane between AI applications and model outputs: enforce policy YAML, redact
+              sensitive data, detect prompt injection, route edge cases through a three-tier engine, and create audit-ready evidence by default.
             </p>
           </div>
           <div className="grid gap-4 pt-8 sm:grid-cols-3">
@@ -147,9 +147,9 @@ const slides: Slide[] = [
             </div>
             <div className="mt-5 space-y-3.5">
               {[
-                'We can ship GenAI faster without losing control.',
-                'We can prove why a prompt or output was allowed, blocked, or redacted.',
-                'We can start in India and scale policy enforcement globally.',
+                'Ship GenAI faster without giving up runtime control.',
+                'Explain every allow, block, or redact decision with evidence.',
+                'Prove the model can start in India and scale globally.',
               ].map((line) => (
                 <div key={line} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-sm leading-6 text-[#d9e6f2]">
                   {line}
@@ -311,11 +311,11 @@ const slides: Slide[] = [
             <Eyebrow>Why buyers move now</Eyebrow>
             <BulletList
               items={[
-                'EU AI Act obligations are no longer abstract; organizations need operational controls and evidence trails.',
-                'NIST AI RMF plus the GenAI Profile gives enterprises a concrete reference for GenAI risk management.',
-                'OWASP LLM Top 10 formalized common runtime risks such as prompt injection, insecure output handling, and sensitive information disclosure.',
-                'India now combines DPDP momentum with RBI IT governance and data-handling pressure in regulated sectors.',
-                'Gartner projects AI governance spend at $492M in 2026 and above $1B by 2030.',
+                'EU AI Act obligations now push governance from policy language into operational controls and evidence.',
+                'NIST AI RMF plus the GenAI Profile gives enterprises a recognized framework for GenAI risk management.',
+                'OWASP LLM Top 10 turned prompt injection, insecure output handling, and sensitive disclosure into shared buying-language risks.',
+                'India now combines DPDP momentum with RBI-aligned governance pressure in regulated sectors.',
+                'AI governance is becoming a dedicated enterprise spending category as regulated GenAI adoption expands.',
               ]}
             />
             <p className="mt-6 text-[10px] uppercase tracking-[0.2em] text-[#7be0d6]/80">
@@ -609,10 +609,10 @@ const slides: Slide[] = [
           <div className="mt-8">
             <BulletList
               items={[
-                'The category is real: configurable AI runtime governance platform.',
-                'The timing is real: regulation, OWASP pressure, and enterprise buying behavior now converge.',
-                'The wedge is real: India BFSI and healthtech have urgent, local, explainable needs.',
-                'The moat is real: policy-vs-enforcement separation compounds into reusable packs and higher ACV.',
+                'The category is legible: configurable AI runtime governance platform.',
+                'The timing is credible: regulation, OWASP pressure, and enterprise buying behavior now converge.',
+                'The wedge is focused: India BFSI and healthtech have urgent, local, explainable needs.',
+                'The moat compounds: policy-vs-enforcement separation expands into reusable packs and higher ACV.',
               ]}
             />
           </div>
@@ -625,9 +625,9 @@ const slides: Slide[] = [
           </div>
           <div className="mt-7 space-y-4">
             {[
-              '3 India BFSI or healthtech pilot design partners',
-              'Investor and enterprise introductions for regulated AI deployments',
-              'Strategic conversations with CTO, CISO, and Head of AI buyers now',
+              '3 India BFSI or healthtech pilot design partners in the next quarter',
+              'Investor and enterprise introductions tied to regulated AI deployment budgets',
+              'Live scoping conversations with CTO, CISO, and Head of AI buyers now',
             ].map((ask) => (
               <div key={ask} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-[15px] leading-7 text-white">
                 {ask}
@@ -636,7 +636,7 @@ const slides: Slide[] = [
           </div>
           <div className="mt-8 rounded-2xl border border-[#23c6b7]/30 bg-[#112736] p-5">
             <div className="text-xs uppercase tracking-[0.2em] text-[#8de9e0]">Meeting outcome</div>
-            <div className="mt-2 text-lg text-white">Pilot scoping session within 14 days</div>
+            <div className="mt-2 text-lg text-white">Pilot scoping session booked within 14 days</div>
           </div>
         </div>
       </div>
