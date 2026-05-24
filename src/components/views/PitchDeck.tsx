@@ -120,11 +120,11 @@ const slides: Slide[] = [
     subtitle: 'Configurable AI Runtime Governance Platform',
     navSubtitle: 'Global governance thesis',
     content: (
-      <div className="grid h-full gap-8 lg:grid-cols-[1.22fr_0.78fr]">
+      <div className="grid h-full gap-8 lg:grid-cols-[1.16fr_0.84fr]">
         <div className="flex flex-col justify-between rounded-[34px] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(35,198,183,0.20),rgba(9,18,30,0.92)_52%),linear-gradient(180deg,rgba(10,18,30,0.96),rgba(7,13,23,0.98))] p-9 xl:p-10">
           <div>
             <Eyebrow>India-first wedge. Global category.</Eyebrow>
-            <h1 className="mt-8 max-w-[13.5ch] text-[clamp(2.8rem,3.7vw,4.4rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-white">
+            <h1 className="mt-8 max-w-[14.5ch] text-[clamp(2.55rem,3.35vw,4rem)] font-semibold leading-[1.06] tracking-[-0.03em] text-white">
               Sovereign-AI is the configurable runtime governance layer for safe, auditable enterprise GenAI.
             </h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-[#b9cad9]">
@@ -751,11 +751,11 @@ export function PitchDeck() {
           <div className="border-b border-white/10 px-10 py-7">
             <div className="flex items-start justify-between gap-4">
               <div className="min-w-0 flex-1">
-                <div className="text-[11px] uppercase tracking-[0.28em] text-[#7be0d6]">{currentSlide.subtitle}</div>
+                <div className="text-[10px] uppercase tracking-[0.18em] text-[#7be0d6]">{currentSlide.subtitle}</div>
                 <h2 className="mt-3 text-[clamp(2.4rem,3vw,3.1rem)] font-semibold tracking-[-0.03em] text-white">{currentSlide.title}</h2>
               </div>
-              <div className="shrink-0 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-[11px] uppercase tracking-[0.22em] text-white/45">
-                Sovereign-AI / 24 May 2026 narrative
+              <div className="shrink-0 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-[10px] uppercase tracking-[0.16em] text-white/45">
+                Narrative / 24 May 2026
               </div>
             </div>
           </div>
