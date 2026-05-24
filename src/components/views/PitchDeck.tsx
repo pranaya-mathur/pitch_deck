@@ -17,6 +17,7 @@ type Slide = {
   id: number;
   title: string;
   subtitle: string;
+  navSubtitle?: string;
   content: React.ReactNode;
 };
 
@@ -117,12 +118,13 @@ const slides: Slide[] = [
     id: 1,
     title: 'Title / Hook',
     subtitle: 'Configurable AI Runtime Governance Platform',
+    navSubtitle: 'Global governance thesis',
     content: (
       <div className="grid h-full gap-8 lg:grid-cols-[1.25fr_0.75fr]">
         <div className="flex flex-col justify-between rounded-[34px] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(35,198,183,0.20),rgba(9,18,30,0.92)_52%),linear-gradient(180deg,rgba(10,18,30,0.96),rgba(7,13,23,0.98))] p-10">
           <div>
             <Eyebrow>India-first wedge. Global category.</Eyebrow>
-            <h1 className="mt-8 max-w-4xl text-5xl font-semibold leading-[1.06] text-white xl:text-6xl">
+            <h1 className="mt-8 max-w-4xl text-[clamp(3.5rem,5vw,5.6rem)] font-semibold leading-[1.02] text-white">
               Sovereign-AI is the configurable runtime governance layer for safe, auditable enterprise GenAI.
             </h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-[#b9cad9]">
@@ -186,6 +188,7 @@ const slides: Slide[] = [
     id: 2,
     title: 'The Problem',
     subtitle: 'Policy documents do not stop runtime failures',
+    navSubtitle: 'Runtime blind spot',
     content: (
       <div className="grid h-full gap-8 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="rounded-[32px] border border-white/10 bg-[#091321]/92 p-10">
@@ -242,6 +245,7 @@ const slides: Slide[] = [
     id: 3,
     title: 'The Solution',
     subtitle: 'Architecture + three-tier model',
+    navSubtitle: 'Three-tier control plane',
     content: (
       <div className="space-y-8">
         <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
@@ -293,6 +297,7 @@ const slides: Slide[] = [
     id: 4,
     title: 'Why Now',
     subtitle: 'Market timing + regulations',
+    navSubtitle: 'Timing + regulation',
     content: (
       <div className="space-y-8">
         <div className="grid gap-4 lg:grid-cols-3">
@@ -345,6 +350,7 @@ const slides: Slide[] = [
     id: 5,
     title: 'Product Differentiation & Moat',
     subtitle: 'Policy packs beat one-off guardrails',
+    navSubtitle: 'Policy-pack moat',
     content: (
       <div className="grid h-full gap-8 lg:grid-cols-[0.95fr_1.05fr]">
         <div className="rounded-[32px] border border-white/10 bg-[#08131f]/92 p-8">
@@ -380,6 +386,7 @@ const slides: Slide[] = [
     id: 6,
     title: 'Target Markets & Prioritization',
     subtitle: 'India BFSI / healthtech first. Global policy packs next.',
+    navSubtitle: 'India first, global next',
     content: (
       <div className="space-y-8">
         <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
@@ -436,6 +443,7 @@ const slides: Slide[] = [
     id: 7,
     title: 'Go-to-Market & Traction Path',
     subtitle: 'Land with a pilot. Expand through policy packs and governance ownership.',
+    navSubtitle: 'Pilot to platform motion',
     content: (
       <div className="grid h-full gap-8 lg:grid-cols-[1fr_1fr]">
         <div className="rounded-[32px] border border-white/10 bg-[#0a1523]/92 p-8">
@@ -484,6 +492,7 @@ const slides: Slide[] = [
     id: 8,
     title: 'Commercial Model & Pricing',
     subtitle: 'Include both India and global tiers',
+    navSubtitle: 'India + global pricing',
     content: (
       <div className="space-y-8">
         <div className="grid gap-6 lg:grid-cols-2">
@@ -538,6 +547,7 @@ const slides: Slide[] = [
     id: 9,
     title: 'Proof Assets & Roadmap',
     subtitle: 'What de-risks the buyer and what scales the company',
+    navSubtitle: 'Proof + roadmap',
     content: (
       <div className="grid h-full gap-8 lg:grid-cols-[1fr_1fr]">
         <div className="rounded-[32px] border border-white/10 bg-[#091321]/92 p-8">
@@ -588,6 +598,7 @@ const slides: Slide[] = [
     id: 10,
     title: 'Final Verdict / Ask',
     subtitle: 'Why this wins and what we want now',
+    navSubtitle: 'Closing ask',
     content: (
       <div className="grid h-full gap-8 lg:grid-cols-[1.15fr_0.85fr]">
         <div className="rounded-[34px] border border-[#23c6b7]/35 bg-[radial-gradient(circle_at_top_left,rgba(35,198,183,0.22),rgba(8,19,31,0.97)_55%)] p-10">
@@ -680,7 +691,7 @@ export function PitchDeck() {
         </div>
       </div>
 
-      <div className="grid flex-1 gap-6 lg:grid-cols-[280px_1fr]">
+      <div className="grid flex-1 gap-6 lg:grid-cols-[320px_1fr]">
         <aside className="rounded-[32px] border border-white/10 bg-[#07111d]/92 p-5">
           <div className="mb-5 flex items-center gap-3 text-[#7be0d6]">
             <FileStack className="h-5 w-5" />
@@ -709,9 +720,11 @@ export function PitchDeck() {
                     >
                       {slide.id}
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <div className={`text-sm font-medium ${isActive ? 'text-white' : 'text-white/70'}`}>{slide.title}</div>
-                      <div className="mt-1 text-[11px] uppercase tracking-[0.18em] text-white/35">{slide.subtitle}</div>
+                      <div className="mt-1 text-[10px] uppercase leading-4 tracking-[0.12em] text-white/35">
+                        {slide.navSubtitle ?? slide.subtitle}
+                      </div>
                     </div>
                   </div>
                 </button>
